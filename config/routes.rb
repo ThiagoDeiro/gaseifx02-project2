@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post '/sessions/' =>'sessions#create'
   post '/users' => 'users#create'
   get '/dashboard' => 'movies#index'
+  post '/dashboard/search' => 'movies#show'
   delete '/sessions' => 'sessions#destroy' 
   get '/users/new' => 'users#new'
 end

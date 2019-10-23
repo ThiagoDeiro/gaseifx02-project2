@@ -1,12 +1,10 @@
 <p>Hello</p>
-<form id="movie_search_form">
-		<input id="movie_search_input" type="text" value="">
+<form action="/dashboard/" method="POST">
+		<input  type="text" value="">
 		<input type="submit" value="Search">
-	</form>
-<ul class="main-table">
-<li><%= link_to("Logout", sessions_path, :method => :delete) %></li>
-    <% @movies.each_with_index do |movie, index|%>
- <li ><%= movie.name%></li>
- <% end %> 
-</ul>
+</form>
+    <p><%= link_to("Logout", sessions_path, :method => :delete) %></p>
+
+
+    <%# <% @movies.each_with_index do |movie, index|%>
 
