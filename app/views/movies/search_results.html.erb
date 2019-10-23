@@ -1,0 +1,10 @@
+<h2>Results for "<%= @query %>"</h2>
+<ul>
+<% @results.each do |movie| %>
+ <li>
+   <a href="/movies/<%= movie['id'] %>">
+     <%= movie['title'] %>
+   </a>
+ </li>
+<% end %>
+</ul>
