@@ -1,0 +1,21 @@
+<form action="/users" method="POST">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <div class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+    <input type="name" name="user[name]" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="name">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" name="user[email]" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email">
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" name="user[password]"class="form-control" id="exampleInputPassword1" placeholder="password">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password confirmation</label>  
+    <input type="password confirmation" name="user[password_confirmation]"class="form-control" id="exampleInputPassword1" placeholder="password_confirmation">
+  </div>
+  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+</form>
