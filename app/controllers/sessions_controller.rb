@@ -10,10 +10,10 @@ class SessionsController < ApplicationController
         end
     end
 
-    # def destroy
-    #     session[:user_id] = nil
-    #     redirect_to '/'
-    #   end
+    def destroy
+        session[:user_id] = nil
+        redirect_to '/'
+      end
 
     private
         def login_params

@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   post '/sessions/' =>'sessions#create'
   post '/users' => 'users#create'
   get '/dashboard' => 'movies#index'
-  delete '/login' => 'session#destroy' 
+  delete '/sessions' => 'sessions#destroy' 
 end

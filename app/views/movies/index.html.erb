@@ -1,7 +1,9 @@
 <p>Hello</p>
 
 <ul class="main-table">
+<li><%= link_to("Logout", sessions_path, :method => :delete) %></li>
     <% @movies.each_with_index do |movie, index|%>
  <li ><%= movie.name%></li>
  <% end %> 
 </ul>
+
