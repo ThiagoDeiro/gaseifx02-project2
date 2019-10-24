@@ -1,14 +1,13 @@
 class MoviesController < ApplicationController
-    # def index
-    #     @movies = Movie.all
-    # end
-    # def search 
-    #     @movie = Movie.find(movie_params)
-    # end
     API_KEY = '24d863d54c86392e6e1df55b9a328755'
     API_BASE_URL = 'https://api.themoviedb.org/3'
-
+    # API_KEY = 'f44e65cd'
+    # API_BASE_URL ='http://www.omdbapi.com/'
   def search_form
+  end
+
+  def index 
+    @users = User.find_by :id => session[:user_id]
   end
 
   def search_results
@@ -16,7 +15,7 @@ class MoviesController < ApplicationController
     url = "#{ API_BASE_URL }/search/movie?api_key=#{ API_KEY }&query=#{ @query }"
     response = HTTParty.get( url )
     @results = response['results']
-   
+    # raise 'hell'
   end
 
   def show
