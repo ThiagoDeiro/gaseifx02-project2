@@ -11,16 +11,17 @@ class MoviesController < ApplicationController
   end
 
   def search_results
-    @query = params[ :query ]
-    url = "#{ API_BASE_URL }/search/movie?api_key=#{ API_KEY }&query=#{ @query }"
-    response = HTTParty.get( url )
-    @results = response['results']
-    # raise 'hell'
+      @query = params[ :query ]
+      url = "#{ API_BASE_URL }/search/movie?api_key=#{ API_KEY }&query=#{ @query }"
+      response = HTTParty.get( url )
+      @results = response['results']
+      # raise 'hell'
   end
 
   def show
     url = "#{ API_BASE_URL }/movie/#{ params[:id] }?api_key=#{ API_KEY }"
     @movie = HTTParty.get( url )
-    redirect_to '/dashboard'
   end
+  
+
 end

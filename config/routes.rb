@@ -4,9 +4,10 @@ Rails.application.routes.draw do
   get '/' => 'users#index'
   post '/sessions/' =>'sessions#create'
   post '/users' => 'users#create'
-  get '/dashboard' => 'movies#index'
+  get '/dashboard' => 'movies#search_form"'
   delete '/sessions' => 'sessions#destroy' 
   get '/users/new' => 'users#new'
   get "/search" => "movies#search_form"
   get "/search/results" =>"movies#search_results"
+  get "/movie/:id" => "movies#show"
 end

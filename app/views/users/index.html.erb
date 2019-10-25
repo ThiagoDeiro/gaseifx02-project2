@@ -1,27 +1,35 @@
-<h1>
-  Login
-</h1>
-<form action="/sessions" method="POST">
-    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" name="login[email]" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+<div class="header">
+  <div class="login-position">
+      <h1 class="login">Login</h1>
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" name="login[password]"class="form-control" id="exampleInputPassword1" placeholder="password">
-  </div>
-  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-</form>
-<div class="errors">
-    <% if flash[:login_errors]%>
-      <% flash[:login_errors].each do |error| %>
-        <p> <%=error%> </p>
-      <%end%>
-    <%end%>
+  <div class="logo">
+  <%# <%= image_tag("Logo.png", :alt => "rss feed")%> 
 </div>
-
-<h1>New User?Sign Up Now!</h1>
-<form action="/users/new" >
-  <input class="btn btn-primary" type="submit" value="Submit"></form>
+<div class="login-form">
+  <form action="/sessions" method="POST">
+      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address :</label>
+      <input type="email" name="login[email]" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password :</label>
+      <input type="password" name="login[password]"class="form-control" id="exampleInputPassword1" placeholder="password">
+    </div>
+    <button class="form-button" type="submit" name="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <div class="errors">
+      <% if flash[:login_errors]%>
+        <% flash[:login_errors].each do |error| %>
+          <p> <%=error%> </p>
+        <%end%>
+      <%end%>
+  </div>
+  <div class="signUp-message">
+  <h5>New User? Sign Up Now!</h5>
+    <form action="/users/new" >
+      <input class="form-button sign-Up-Button-Position" class="btn btn-primary" type="submit" value="SignUp">
+    </form>
+  </div>
+</div>

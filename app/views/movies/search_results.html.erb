@@ -2,23 +2,20 @@
 <ul>
 <% @results.each do |movie| %>
  <li>
-   <a href="/movies/<%= movie['id'] %>">
      <div class="album py-5 bg-light">
     <div class="container">
-
       <div class="row">
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-                  <img src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>" class="card-img" alt="..." style="width:150px;height:100%;">
+                  <img src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>" class="card-img" alt="..." >
             <div class="card-body">
-              <h5 class="card-title"> <%= movie['title'] %></h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <a href="/movie/<%= movie['id'] %>"><h5 class="card-title"> <%= movie['title'] %></h5></a>
+              <p class="card-text"><%= movie['overview']%></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                 <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                 </div>
-                <small class="text-muted">9 mins</small>
+                <small class="text-muted">Release date :<%= movie['release_date']%></small>
               </div>
             </div>
           </div>
@@ -26,7 +23,6 @@
       </div>
       </div>
       </div>
-   </a>
  </li>
 <% end %>
 </ul>
