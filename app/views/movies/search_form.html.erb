@@ -1,8 +1,10 @@
-
-<form action="/search/results">
-    Search Text:
-    <input type="text" name="query"/>
-    <input type="submit" value="Search"/>
-</form>
-<p><%= link_to("Logout", sessions_path, :method => :delete) %></p>
-
+<div class="navBar">
+    <nav class="navbar navbar-light bg-light navBar">
+    <a class="navbar-brand" ><%= image_tag("newlogo.png", :class => "navbar-logo") %></a>
+    <form class="form-inline" action="/search/results">
+        <p><%= link_to("Logout", sessions_path, :method => :delete) %></p>
+        <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+        <input class="btn btn-outline-success my-2 my-sm-0" value="Search" type="submit">
+    </form>
+    </nav>
+</div>
