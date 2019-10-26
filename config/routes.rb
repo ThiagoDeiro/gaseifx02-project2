@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get '/dashboard' => 'movies#search_form"'
   delete '/sessions' => 'sessions#destroy' 
   get '/users/new' => 'users#new'
-  get "/search" => "movies#search_form"
+  get "/search/" => "movies#search_form"
+  get "/search/movie" => "movies#popular"
   get "/search/results" =>"movies#search_results"
   get "/movie/:id" => "movies#show"
+  # post "/movies/:movie_id" => "movies#fav_save"
 end

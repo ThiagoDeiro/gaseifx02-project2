@@ -2,9 +2,17 @@
     <nav class="navbar navbar-light bg-light navBar">
     <a class="navbar-brand" ><%= image_tag("newlogo.png", :class => "navbar-logo") %></a>
     <form class="form-inline" action="/search/results">
-        <p><%= link_to("Logout", sessions_path, :method => :delete) %></p>
-        <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
-        <input class="btn btn-outline-success my-2 my-sm-0" value="Search" type="submit">
+            <div >
+            <button class="btn btn-primary logout_button" type="submit"><%= link_to("Logout", sessions_path, :method => :delete)%></button>
+            </div>
+        <div class="input-search">
+            <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+            <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="Search" type="submit">
+        </div>
     </form>
     </nav>
 </div>
+<p><%= session[:user_name]%></p>
+<form action="/search/movie">
+    <p><%= @movie.inspect %></p>
+</form>
