@@ -1,35 +1,28 @@
+<div class="navBar">
+    <nav class="navbar navbar-light bg-light navBar">
+    <a class="navbar-brand" ><%= image_tag("newlogo.png", :class => "navbar-logo") %></a>
+    <form action="user/favourite">
+    <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="watchlist" type="submit">
+    <div class="logout-position">
+    <button class="btn btn-primary logout_button" type="submit"><%= link_to("Logout", sessions_path, :method => :delete)%></button>
+    </div>
+    </form>
+    <form class="form-inline" action="/search/results">
+        <div class="input-search">
+            <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+            <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="Search" type="submit">
+        </div>
+    </form>
+    </nav>
+</div>
+
 <h2>Results for "<%= @query %>"</h2>
 <p><%= session[:user_name]%></p>
 <p><%= session[:user_id]%></p>
-<ul>
+<div class="search-results-page-body">
 <% @results.each do |movie| %>
- <li>
-  <%= movie.inspect%>
-     <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-                  <img src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>" class="card-img" alt="..." >
-            <div class="card-body">
-              <a href="/movie/<%= movie['id'] %>"><h5 class="card-title"> <%= movie['title'] %></h5></a>
-              <p class="card-text"><%= movie['overview']%></p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                <form action="" method="post">
-                 <a><button type="button" class="btn btn-sm btn-outline-secondary">Add</button></a>
-                 </form>
-                </div>
-                <small class="text-muted">Release date :<%= movie['release_date']%></small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div>
-      </div>
- </li>
+  <img src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>" class="card-img-top img-top" alt="..."style="width:400px;height:500px;">
+    <div class="card-body">
+    <p class="movie-title-show-page"><a href="/movie/<%= movie['id'] %>"> <%= movie['title'] %></a></p>
+</div>
 <% end %>
-</ul>
-
- 

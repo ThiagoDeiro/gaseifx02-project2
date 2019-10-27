@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
     API_BASE_URL = 'https://api.themoviedb.org/3'
   def search_form
     @logged_user= session[:user_id]
-    url = "#{ API_BASE_URL }/discover/movie?sort_by=popularity.desc&api_key=#{ API_KEY }"
+    url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
     @movie = HTTParty.get(url)
   end
 
@@ -26,15 +26,25 @@ class MoviesController < ApplicationController
   end
 
   def popular 
-    url = "#{ API_BASE_URL }/discover/movie?sort_by=popularity.desc&api_key=#{ API_KEY }"
+    url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
     @movie = HTTParty.get(url)
   end
-  # function to save de user and movie Id
-  # def fav_save  
-  #   @user = User.find_by session[:user_id]
-  #   @user.movie_id = params[:movie_id]
-  #   @user.save
-  #   redirect_to'/search/results'
-  #   raise "hell"
-  # end
+
+  def add_favourite
+    @user = User.find_by :id => session[:user_id]
+    @movie_id = params[:id].to_i
+    movieuser = MoviesUser.new
+    movieuser.user_id = @user.id
+    movieuser.movie_id = @movie_id
+    movieuser.save
+    redirect_to'/movie/'+ @movie_id.to_s
+    # raise "hell"
+  end
+  def show_fav 
+    url = "#{ API_BASE_URL }/movie/#{ params[:id] }?api_key=#{ API_KEY }"
+    @movie = HTTParty.get(url)
+    @user = User.find_by :id => session[:user_id]
+    @favorate_ids = @user.movies_users
+    @favorate_ids = @favorate_ids.map{ |obj| obj.movie_id }
+  end
 end
