@@ -1,44 +1,43 @@
 <div class="navBar">
     <nav class="navbar navbar-light bg-light navBar">
     <a class="navbar-brand" ><%= image_tag("newlogo.png", :class => "navbar-logo") %></a>
-    <form action="user/favourite">
-    <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="watchlist" type="submit">
-    <div class="logout-position">
-    <button class="btn btn-primary logout_button" type="submit"><%= link_to("Logout", sessions_path, :method => :delete)%></button>
-    </div>
-    </form>
     <form class="form-inline" action="/search/results">
         <div class="input-search">
             <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
             <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="Search" type="submit">
         </div>
+    <form action="user/favourite">
+    <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="watchlist" type="submit"></form>
+    <div class="logout-position">
+    <button class="btn btn-primary logout_button" type="submit"><%= link_to("Logout", sessions_path, :method => :delete)%></button>
+    </div>
     </form>
     </nav>
 </div>
-
 <div class="search-results-page-body">
-<div class="search-page-header">
-  <h2>Welcome <%= session[:user_name]%></h2>
-  <h5>Results for : <%= @query %></h5>
-</div>
-<% @results.each do |movie| %>
-<div class="card mb-3" style="width: 740px;">
-  <div class="row no-gutters">
-    <div class="col-md-4">
-      <img src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>"  alt="..."style="width:200px;height:350">
+    <div class="search-page-header">
+        <div class="search-results-name">
+          <h5>Results for <%= @query %></h5>
+        </div>
+        <hr class="line-under-query">
     </div>
-    <div class="col-md-8">
-      <div class="card-body">
-        <h5 class="card-title"><a href="/movie/<%= movie['id'] %>"> <%= movie['title'] %></a></h5>
-        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-</div>
+
+  <% @results.each do |movie| %>
+    <div class="main-body-container">
+        <div class="image-title-results-page">
+            <img class="image-style" src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>"  alt="..."style="width:150px;height:150">
+            <div class="search-result-title">
+              <p class="movie-title"><a class="movie-title-link" href="/movie/<%= movie['id'] %>"> <%= movie['title'] %></a></p>
+            </div>
+        </div>  
+    </div>    
 <% end %>
 </div>
-<div class="footer">
-<footer>hi</footer>
-</div>
 
+
+<div class="card footer">
+  <div class="card-body">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+  </div>
+</div>

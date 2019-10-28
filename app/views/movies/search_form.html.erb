@@ -1,20 +1,21 @@
 <div class="navBar">
     <nav class="navbar navbar-light bg-light navBar">
     <a class="navbar-brand" ><%= image_tag("newlogo.png", :class => "navbar-logo") %></a>
+    <form class="form-inline" action="/search/results">
+        <div class="input-search">
+            <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+            <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="Search" type="submit">
+        </div>
     <form action="user/favourite">
     <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="watchlist" type="submit">
     <div class="logout-position">
     <button class="btn btn-primary logout_button" type="submit"><%= link_to("Logout", sessions_path, :method => :delete)%></button>
     </div>
     </form>
-    <form class="form-inline" action="/search/results">
-        <div class="input-search">
-            <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
-            <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="Search" type="submit">
-        </div>
     </form>
     </nav>
 </div>
+<br/>
 <br/>
 <!--<p><%= session[:user_name]%></p>
 <form action="/search/movie">
@@ -23,4 +24,4 @@
     <%end%>
 </form>
 
-<%= @movie.inspect%>  -->
+<%= @movie.inspect%> 
