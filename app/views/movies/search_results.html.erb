@@ -6,13 +6,14 @@
             <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
             <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="Search" type="submit">
         </div>
-    <form action="user/favourite">
-    <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="watchlist" type="submit"></form>
+    </form>
+    <form action="/user/favourite">
+    <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="watchlist" type="submit">
     <div class="logout-position">
     <button class="btn btn-primary logout_button" type="submit"><%= link_to("Logout", sessions_path, :method => :delete)%></button>
     </div>
-    </form>
     </nav>
+    </form>
 </div>
 <div class="search-results-page-body">
     <div class="search-page-header">
@@ -22,7 +23,7 @@
         <hr class="line-under-query">
     </div>
 
-  <% @results.each do |movie| %>
+  <% @results.each do |movie|%>
     <div class="main-body-container">
         <div class="image-title-results-page">
             <img class="image-style" src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>"  alt="..."style="width:150px;height:150">
@@ -36,8 +37,6 @@
 
 
 <div class="card footer">
-  <div class="card-body">
     <h5 class="card-title">Special title treatment</h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-  </div>
 </div>

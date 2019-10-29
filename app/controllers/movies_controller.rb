@@ -41,10 +41,18 @@ class MoviesController < ApplicationController
     # raise "hell"
   end
   def show_fav 
-    url = "#{ API_BASE_URL }/movie/#{ params[:id] }?api_key=#{ API_KEY }"
-    @movie = HTTParty.get(url)
     @user = User.find_by :id => session[:user_id]
     @favorate_ids = @user.movies_users
     @favorate_ids = @favorate_ids.map{ |obj| obj.movie_id }
+    @favorate_ids = @favorate_ids.uniq
+    movie_id = @favorate_ids.first
+    @titles = []
+    @favorate_ids.each do |id|
+      movie_url = "#{ API_BASE_URL }/movie/#{id}?api_key=#{ API_KEY }"
+      movie = HTTParty.get(movie_url)
+      title = JSON.parse(movie.body)['title']
+      @titles.push(title)
+    end
+    
   end
 end
