@@ -17,10 +17,6 @@
 </div>
 
 <form action="/search/movie">
-    <p><%= @movie.inspect %></p>
+    <p><%= @titles.inspect %></p>
 </form> 
-    <% @movie.each do |movie| %>
-    <%= @movie['results']%>
-    <%end%>
-</form>
 

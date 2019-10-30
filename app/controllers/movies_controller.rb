@@ -3,8 +3,16 @@ class MoviesController < ApplicationController
     API_BASE_URL = 'https://api.themoviedb.org/3'
   def search_form
     @logged_user= session[:user_id]
-    url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
-    @movie = HTTParty.get(url)
+    discover_url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
+    @discover = HTTParty.get(discover_url)
+    @discover_movie = JSON.parse(@discover.body)['results']
+    @titles =[]
+    @discover_movie.each do |key, index|
+      movie_url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
+      movie = HTTParty.get(movie_url)
+      title = JSON.parse(movie.body)['title']
+      @titles.push(title)
+      end
   end
 
   def index 
@@ -26,8 +34,16 @@ class MoviesController < ApplicationController
   end
 
   def popular 
-    url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
-    @movie = HTTParty.get(url)
+    discover_url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
+    @discover = HTTParty.get(discover_url)
+    @discover_movie = JSON.parse(@discover.body)['results']
+    @titles =[]
+    # @discover_movie.each do |key, index|
+    #   movie_url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
+    #   movie = HTTParty.get(movie_url)
+    #   title = JSON.parse(movie.body)['title']
+    #   @titles.push(title)
+    #   end
   end
 
   def add_favourite
@@ -45,13 +61,18 @@ class MoviesController < ApplicationController
     @favorate_ids = @user.movies_users
     @favorate_ids = @favorate_ids.map{ |obj| obj.movie_id }
     @favorate_ids = @favorate_ids.uniq
-    movie_id = @favorate_ids.first
     @titles = []
     @favorate_ids.each do |id|
       movie_url = "#{ API_BASE_URL }/movie/#{id}?api_key=#{ API_KEY }"
       movie = HTTParty.get(movie_url)
       title = JSON.parse(movie.body)['title']
       @titles.push(title)
+    end
+
+    def delete 
+      @movie_id = params[:id]
+      @movie_id.destroy 
+      redirect_to'/user/favourite'
     end
     
   end
