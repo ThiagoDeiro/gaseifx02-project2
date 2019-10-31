@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/search/results" =>"movies#search_results"
   get "/movie/:id" => "movies#show"
   post "/user/movies/:id/add_favourite" => "movies#add_favourite"
-  get "/user/favourite" => "movies#show_fav"  
-  post "/movie/:id/delete" => 'movies#delete'
+  get "/user/favourite" => "movies#show_fav" 
+  delete '/movie/:id/delete' => 'movies#destroy' 
+  
 end

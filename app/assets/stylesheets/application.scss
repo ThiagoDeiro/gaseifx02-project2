@@ -211,4 +211,21 @@
 
 .fav-movies-list{
     height: 94vh;
+    background-image:linear-gradient(to right bottom ,rgb(29,29,50), rgb(61, 37, 64));
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100% );
+}
+.movie_fav_main_container{
+    max-width: 40vw;
+    max-height: 60hv;
+    color: white;
+    margin: 0 auto;
+    text-align: center;
+    border:1px solid rgb(178, 71, 110); 
+    border-radius: 20px;
+    overflow:scroll
+}
+.watchlist-title{
+    color: white;
+    text-align: center;
+    padding: 2%;
 }

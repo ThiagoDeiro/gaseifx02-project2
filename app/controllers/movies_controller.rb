@@ -1,23 +1,21 @@
 class MoviesController < ApplicationController
+  before_action :check_if_logged_in 
     API_KEY = '24d863d54c86392e6e1df55b9a328755'
     API_BASE_URL = 'https://api.themoviedb.org/3'
   def search_form
     @logged_user= session[:user_id]
     discover_url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
     @discover = HTTParty.get(discover_url)
-    @discover_movie = JSON.parse(@discover.body)['results']
-    @titles =[]
-    @discover_movie.each do |key, index|
-      movie_url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
-      movie = HTTParty.get(movie_url)
-      title = JSON.parse(movie.body)['title']
-      @titles.push(title)
-      end
+    @movie_titles = @discover['results']
+    @movie_discover = []
+    @movie_titles.each do |movie| 
+      @movie_discover.push(movie)
+    end
   end
-
   def index 
     @users = User.find_by :id => session[:user_id]
   end
+
 
   def search_results
       @query = params[ :query ]
@@ -37,13 +35,6 @@ class MoviesController < ApplicationController
     discover_url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
     @discover = HTTParty.get(discover_url)
     @discover_movie = JSON.parse(@discover.body)['results']
-    @titles =[]
-    # @discover_movie.each do |key, index|
-    #   movie_url = "#{ API_BASE_URL }/discover/movie?certification_country=US&certification=R&sort_by=revenue.desc&with_cast=3896&api_key=#{ API_KEY }"
-    #   movie = HTTParty.get(movie_url)
-    #   title = JSON.parse(movie.body)['title']
-    #   @titles.push(title)
-    #   end
   end
 
   def add_favourite
@@ -67,13 +58,13 @@ class MoviesController < ApplicationController
       movie = HTTParty.get(movie_url)
       title = JSON.parse(movie.body)['title']
       @titles.push(title)
-    end
+      # {title: title, movie_id: id}
+    end 
+  end
 
-    def delete 
-      @movie_id = params[:id]
-      @movie_id.destroy 
-      redirect_to'/user/favourite'
-    end
-    
+  def destroy 
+    @movie = MovieUser.find_by :movie_id => params[:id]
+    @movie.destroy 
+    redirect_to'/user/favourite'
   end
 end

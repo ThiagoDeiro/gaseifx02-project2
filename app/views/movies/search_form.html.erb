@@ -1,6 +1,6 @@
 <div class="navBar">
     <nav class="navbar navbar-light bg-light navBar">
-    <a class="navbar-brand" ><%= image_tag("newlogo.png", :class => "navbar-logo") %></a>
+    <a href="/search" class="navbar-brand" ><%= image_tag("newlogo.png", :class => "navbar-logo") %></a>
     <form class="form-inline" action="/search/results">
         <div class="input-search">
             <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
@@ -17,6 +17,11 @@
 </div>
 
 <form action="/search/movie">
-    <p><%= @titles.inspect %></p>
-</form> 
-
+    <% @movie_discover.each do |movie| %>
+    <img src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>"  alt="..."style="width:150px;height:150"><p><%= movie["title"] %></p>
+    <% end %>
+</form>
+  <div class="card footer">
+    <h5 class="card-title">Special title treatment</h5>
+    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+</div>

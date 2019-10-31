@@ -1,7 +1,7 @@
 
     <div class="navBar">
     <nav class="navbar navbar-light bg-light navBar">
-    <a class="navbar-brand" ><%= image_tag("newlogo.png", :class => "navbar-logo") %></a>
+    <a href="/search" class="navbar-brand" ><%= image_tag("newlogo.png", :class => "navbar-logo") %></a>
     <form class="form-inline" action="/search/results">
         <div class="input-search">
             <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
@@ -17,14 +17,17 @@
     </form>
 </div>
 
-<%=@favorate_ids.inspect%>
 <div class="fav-movies-list">
-
+    <div class="watchlist-title">
+        <h1>Watchlist</h1>
+    </div>
+   <div class="movie_fav_main_container"> 
     <% @titles.each do |title| %>
-        <h2><%= title %></h2>
-        <form action = "/movie/<%= @movie_id %>/delete" method= "delete" value = "delete">
+        <h5><%= title %></h5>
+        <form action = "/movie/<%= @movie_id %>/delete" method= "delete" value = "delete" >
         <input class="input-button" type="submit" value="delete"></form>
     <% end %>
+    </div>
 </div>
 
     <div class="card footer">
