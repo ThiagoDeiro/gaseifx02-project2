@@ -18,6 +18,13 @@ class MoviesController < ApplicationController
     @most_popular_movies.each do |popular| 
       @popular_movies.push(popular)
     end
+    drama = "#{ API_BASE_URL }/discover/movie?with_genres=18&sort_by=vote_average.desc&vote_count.gte=10&api_key=#{ API_KEY }"
+    @movie_drama = HTTParty.get(drama)
+    @movie_drama_best = @movie_drama['results']
+    @top_rated_movie_drama = []
+    @movie_drama_best.each do |top| 
+      @top_rated_movie_drama.push(top)
+    end
   end
   def index 
     @users = User.find_by :id => session[:user_id]

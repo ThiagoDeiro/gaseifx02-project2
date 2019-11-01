@@ -13,28 +13,40 @@
  */
 /* Custom bootstrap variables must be set or imported *before* bootstrap. */
 @import "bootstrap";
-
-
-.login-position{
-    max-width: 100px;
-    color: white;
-    margin: 0 auto;
-    display: block;
+.header{
+    height: 95vh;
+    background-image:linear-gradient(to right bottom ,rgb(29,29,50), rgb(61, 37, 64));
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100% );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
 }
+.logo-header{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin-bottom: 10px;
+
+}
+.image-logo{
+    margin-top: 40px;
+    width: 300px;
+    margin: 0 auto;
+}
+
 .login-form{
     background-image:linear-gradient(to right bottom ,rgb(29,29,50), rgb(61, 37, 64));;
-    max-width: 350px;
+    width: 350px;
     margin: 0 auto;
     padding: 50px;
     border:1px solid rgb(178, 71, 110); 
     color: white;
     border-radius: 20px;
 }
-.header{
-    height: 95vh;
-    background-image:linear-gradient(to right bottom ,rgb(29,29,50), rgb(61, 37, 64));
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100% );
-}
+
 
 .form-button {
     color: white;
@@ -48,8 +60,8 @@
 
 .signUp-message{
     padding-top: 22px;
+    text-align: center;
 }
-
 .sign-Up-Button-Position{
     margin-top: 10px;
 }
@@ -63,28 +75,29 @@
     border-radius: 20px;
 }
 
-.SignUp-message{
-    // margin: 0 auto;
-    color: white;
-    margin-left:612px;
-    margin-bottom: 20px;
+.navBar{
+    background:linear-gradient(to right bottom ,rgb(29,29,50), rgb(61, 37, 64)); 
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
-
-.image-logo{
-    margin-top: 40px;
-    width: 300px;
-}
-
 .navbar-logo{
     max-width: 100px;
 }
-.navBar{
-    background:linear-gradient(to right bottom ,rgb(29,29,50), rgb(61, 37, 64)); 
-}
+
 .logout_button{
     color: white;
     background:linear-gradient(to right bottom ,rgb(29,29,50), rgb(61, 37, 64));
     border:2px solid rgb(178, 71, 110);
+}
+.logout_style{
+    color: white;
+    text-decoration: none;
+}
+.logout_style:hover{
+    color: white;
 }
 .logout-position{
     float: left;
@@ -94,8 +107,10 @@
     background:linear-gradient(to right bottom ,rgb(29,29,50), rgb(61, 37, 64));
     border:2px solid rgb(178, 71, 110);
     color: white;
+    margin-right: 10px;
+    height: calc(1.5em + .75rem + 2px);
+    border-radius: 4px;
 }
-
 .cards-align{
     display: flex;
     flex-direction: column;
@@ -164,6 +179,7 @@
 
 .footer{
     background:linear-gradient(to right bottom ,rgb(29,29,50), rgb(61, 37, 64)); 
+    height: 100%;
 }
 
 .image-style{
@@ -214,17 +230,17 @@
 .fav-movies-list{
     height: 94vh;
     background-image:linear-gradient(to right bottom ,rgb(29,29,50), rgb(61, 37, 64));
-    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100% );
 }
 .movie_fav_main_container{
     max-width: 40vw;
     max-height: 60hv;
     color: white;
     margin: 0 auto;
-    text-align: center;
-    border:1px solid rgb(178, 71, 110); 
-    border-radius: 20px;
-    overflow:scroll
+    text-align: left;
+    border:3px solid rgb(178, 71, 110); 
+    border-radius: 10px;
+    overflow:scroll;
+    padding:10px
 }
 .watchlist-title{
     color: white;
@@ -244,20 +260,20 @@
 }
 
 .series-of-movies-home{
-    height: 100vh;
+    height: 100%;
     background-image:linear-gradient(to right bottom ,rgb(0,0,0), rgb(61, 37, 64));
 }
 
 .movie-list{
     width: 80%;
-    height: 200px;
+    height: 310px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     overflow:scroll;
     overflow-y: hidden;
     margin: 0 auto;
-    opacity: 0.6;
+    margin-bottom: 20px;
 }
 ::-webkit-scrollbar {
     width: 10px;
@@ -276,13 +292,10 @@
     ::-webkit-scrollbar-thumb:hover {
     background:rgb(178, 71, 110); 
     }
-    .movie-list:hover{
-    opacity: 1;
-    }
 
 
 .scroll-menu-movie{
-    height: 230px;
+    height: 250px;
     padding: 10px;
 }
 
@@ -293,5 +306,13 @@
 }
 
 .lian-movies{
-    margin-top: 300px;
+    margin-top: 40px;
+}
+
+.home-line{
+    width: 80%;
+}
+
+.delete-button{
+    float: right;
 }

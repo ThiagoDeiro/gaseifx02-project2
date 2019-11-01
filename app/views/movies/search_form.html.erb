@@ -1,46 +1,70 @@
-<div class="navBar">
-    <nav class="navbar navbar-light bg-light navBar">
-    <a href="/search" class="navbar-brand" ><%= image_tag("newlogo.png", :class => "navbar-logo") %></a>
-    <form class="form-inline" action="/search/results">
-        <div class="input-search">
-            <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
-            <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="Search" type="submit">
+<div class="body">
+    <div class="navBar">
+        <nav class="navbar navbar-light bg-light navBar">
+            <a href="/search" class="navbar-brand" ><%= image_tag("newlogo.png", :class => "navbar-logo") %></a>
+            <form class="form-inline" action="/search/results">
+                <div class="input-search">
+                    <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search" aria-label="Search">
+                    <button class="submit_button"  type="submit"><i class="fas fa-search"></i></button>
+    
+                </div>
+            </form>
+            <form action="/user/favourite">
+                <button class=" submit_button" value="Watchlist" type="submit"><i class="fas fa-star"></i> Watchlist</button>
+            </form>
+        </nav>
+            <div class="logout-position">
+                <button  class ="submit_button"><a class="logout_style"rel="nofollow" data-method="delete" href="/sessions"><i class="fas fa-sign-out-alt"></i></a></button>
+            </div>  
+    </div>
+    <div class="image-container-header">
+        <%= image_tag "movie.jpeg", alt: "placeholder image 1",
+                    class: "img-header"%>
+    </div>
+    <div class="series-of-movies-home">
+        <div class="titles-genres">
+                <h4>Top Rated</h4>
+            </div>  
+            <div>
+            <hr class="line-under-show-movie home-line">
+            </div>
+    <div class="movie-list ">
+            <form action="/search/movie">
+                <% @popular_movies.each do |popular| %>
+                <a class="movie-title-link" href="/movie/<%= popular['id'] %>"> <img class="scroll-menu-movie" src="https://image.tmdb.org/t/p/original<%= popular['poster_path']%>"  alt="..."style="width:170px;height:275px"></a>
+            </form>
+            <% end %>
         </div>
-    </form>
-    <form action="/user/favourite">
-    <input class="btn btn-outline-success my-2 my-sm-0 submit_button" value="watchlist" type="submit">
-    <div class="logout-position">
-    <button class="btn btn-primary logout_button" type="submit"><%= link_to("Logout", sessions_path, :method => :delete)%></button>
+        <div class="titles-genres">
+                <h4>Liam Neeson's highest rated 'R' movies</h4>
+            </div>  
+            <div>
+            <hr class="line-under-show-movie home-line">
+            </div>
+        <div class="movie-list lian-movies" >
+            <form action="/search/movie">
+                <% @movie_discover.each do |movie| %>
+                <a class="movie-title-link" href="/movie/<%= movie['id'] %>"> <img class="scroll-menu-movie" src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>"  alt="..."style="width:170px;height:275px"></a>
+            </form>
+            <% end %>
+        </div>
+            <div class="titles-genres">
+                <h4> Best Drama</h4>
+            </div>  
+            <div>
+            <hr class="line-under-show-movie home-line">
+            </div>
+        <div class="movie-list lian-movies " >
+            <form action="/search/movie">
+                <% @top_rated_movie_drama.each do |top| %>
+                <a class="movie-title-link" href="/movie/<%= top['id'] %>"> <img class="scroll-menu-movie" src="https://image.tmdb.org/t/p/original<%= top['poster_path']%>"  alt="..."style="width:170px;height:270px"></a>
+            </form>
+            <% end %>
+        </div>
+     </div>
     </div>
-    </nav>
-    </form>  
-</div>
-<!--<div class="image-container-header">
-    <%= image_tag "movie.jpeg", alt: "placeholder image 1",
-                  class: "img-header"%>
-</div>-->
-<div class="series-of-movies-home">
-     <div class="titles-genres">
-            <h4>Top Rated</h4>
-        </div>  
-   <div class="movie-list ">
-        <form action="/search/movie">
-            <% @popular_movies.each do |popular| %>
-               <a class="movie-title-link" href="/movie/<%= popular['id'] %>"> <img class="scroll-menu-movie" src="https://image.tmdb.org/t/p/original<%= popular['poster_path']%>"  alt="..."style="width:150px;height:160px"></a>
-        </form>
-        <% end %>
+    <div class="card footer">
+        <h5 class="card-title">Special title treatment</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
     </div>
-    <div class="movie-list lian-movies" >
-        <form action="/search/movie">
-            <% @movie_discover.each do |movie| %>
-               <a class="movie-title-link" href="/movie/<%= movie['id'] %>"> <img class="scroll-menu-movie" src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>"  alt="..."style="width:150px;height:160px"></a>
-        </form>
-        <% end %>
-    </div>
-
- 
-</div>
-  <div class="card footer">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 </div>
