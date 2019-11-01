@@ -231,3 +231,51 @@
     text-align: center;
     padding: 2%;
 }
+
+.image-container-header{
+    height: 35vw;
+}
+
+
+.img-header{
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6));
+}
+
+.series-of-movies-home{
+    height: 100vh;
+    background-image:linear-gradient(to right bottom ,rgb(0,0,0), rgb(61, 37, 64));
+}
+
+.movie-list{
+    width: 80%;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow:scroll;
+    overflow-y: hidden;
+    margin: 0 auto;
+    opacity: 0.6;
+}
+
+.movie-list:hover{
+    opacity: 1;
+}
+
+
+.scroll-menu-movie{
+    height: 230px;
+    padding: 10px;
+}
+
+.titles-genres{
+    color: white;
+    text-align: center;
+    padding: 1%;
+}
+
+.lian-movies{
+    margin-top: 300px;
+}

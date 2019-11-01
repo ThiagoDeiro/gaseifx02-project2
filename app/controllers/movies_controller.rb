@@ -11,6 +11,13 @@ class MoviesController < ApplicationController
     @movie_titles.each do |movie| 
       @movie_discover.push(movie)
     end
+    popular = "#{ API_BASE_URL }/discover/movie?sort_by=popularity.desc&api_key=#{ API_KEY }"
+    @most_popular = HTTParty.get(popular)
+    @most_popular_movies = @most_popular['results']
+    @popular_movies = []
+    @most_popular_movies.each do |popular| 
+      @popular_movies.push(popular)
+    end
   end
   def index 
     @users = User.find_by :id => session[:user_id]

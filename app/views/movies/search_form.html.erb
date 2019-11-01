@@ -13,14 +13,33 @@
     <button class="btn btn-primary logout_button" type="submit"><%= link_to("Logout", sessions_path, :method => :delete)%></button>
     </div>
     </nav>
-    </form>
+    </form>  
 </div>
+<div class="image-container-header">
+    <%= image_tag "movie.jpeg", alt: "placeholder image 1",
+                  class: "img-header" %>
+</div>
+<div class="series-of-movies-home">
+     <div class="titles-genres">
+            <h4>Top Rated</h4>
+        </div>  
+   <div class="movie-list ">
+        <form action="/search/movie">
+            <% @popular_movies.each do |popular| %>
+               <a class="movie-title-link" href="/movie/<%= popular['id'] %>"> <img class="scroll-menu-movie" src="https://image.tmdb.org/t/p/original<%= popular['poster_path']%>"  alt="..."style="width:150px;height:160px"></a>
+        </form>
+        <% end %>
+    </div>
+    <div class="movie-list lian-movies" >
+        <form action="/search/movie">
+            <% @movie_discover.each do |movie| %>
+               <a class="movie-title-link" href="/movie/<%= movie['id'] %>"> <img class="scroll-menu-movie" src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>"  alt="..."style="width:150px;height:160px"></a>
+        </form>
+        <% end %>
+    </div>
 
-<form action="/search/movie">
-    <% @movie_discover.each do |movie| %>
-    <img src="https://image.tmdb.org/t/p/original<%= movie['poster_path']%>"  alt="..."style="width:150px;height:150"><p><%= movie["title"] %></p>
-    <% end %>
-</form>
+ 
+</div>
   <div class="card footer">
     <h5 class="card-title">Special title treatment</h5>
     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
