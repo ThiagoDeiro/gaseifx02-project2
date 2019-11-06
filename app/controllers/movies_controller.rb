@@ -22,7 +22,7 @@ class MoviesController < ApplicationController
     @movie_drama = HTTParty.get(drama)
     @movie_drama_best = @movie_drama['results']
     @top_rated_movie_drama = []
-    @movie_drama_best.each do |top| 
+     @movie_drama_best.each do |top| 
       @top_rated_movie_drama.push(top)
     end
   end
@@ -75,10 +75,10 @@ class MoviesController < ApplicationController
       # {title: title, movie_id: id}
     end 
   end
-
   def destroy 
     @movie = MovieUser.find_by :movie_id => params[:id]
     @movie.destroy 
     redirect_to'/user/favourite'
   end
+  
 end
