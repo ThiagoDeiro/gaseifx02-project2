@@ -9,7 +9,7 @@ class MoviesController < ApplicationController
     @movie_titles = @discover['results']
     @movie_discover = []
     @movie_titles.each do |movie| 
-      @movie_discover.push(movie)
+      @movie_discover.push(movie) 
     end
     popular = "#{ API_BASE_URL }/discover/movie?sort_by=popularity.desc&api_key=#{ API_KEY }"
     @most_popular = HTTParty.get(popular)
