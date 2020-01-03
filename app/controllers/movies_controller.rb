@@ -42,7 +42,6 @@ class MoviesController < ApplicationController
   def show
     url = "#{ API_BASE_URL }/movie/#{ params[:id] }?api_key=#{ API_KEY }"
     @movie = HTTParty.get(url)
-    # raise "hell"
   end
 
   def popular 
